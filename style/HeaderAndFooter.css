@@ -9,6 +9,8 @@ body{
     background-color: #DEDEDE;
 }
 
+/* Sidebar css */
+
 #sidebar{
     display: flex;
     color: #DFDFDF;
@@ -16,6 +18,10 @@ body{
     justify-content: space-between;
     background-color: #2C3D47;
     height: 100vh;
+}
+
+#sidebarContent{
+    padding: 12px;
 }
 
 #user{
@@ -39,6 +45,78 @@ body{
 
 #userInfos span:last-child{
     font-size: 12px;
+}
+
+#sideItens{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    list-style: none;
+    white-space: nowrap;
+}
+
+.sideItem{
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.sideItem.active{
+    background-color: #4ca356;
+}
+
+.sideItem:hover:not(.active){
+    transition: ease-in-out 0.3s;
+    background-color: #445d6b;
+}
+
+.sideItem a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sideItem a i{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+#logout{
+    border-top: 1px solid #2C3D47;
+    padding: 12px;
+} 
+
+#logoutBtn{
+    display: flex;
+    justify-content: center;
+    margin-inline: auto;
+    width: 80%;
+    border: 0.1px solid #dedede;
+    padding: 12px;
+    font-size: 15px;
+    gap: 15px;
+    align-items: center;
+    border-radius: 8px;
+    text-align: start;
+    cursor: pointer;
+    background-color: #CD2828;
+    color: #DEDEDE;
+}
+
+/* Header */
+header{
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    width: 85%;
+    height: 55px;
+    background-color: #2C3D47;
+    color: #DEDEDE;
+    font-size: x-large;
+    font-weight: bold;
 }
 
 main{
