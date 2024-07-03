@@ -1,0 +1,35 @@
+.tituloTable{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    margin-inline: auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 25px;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #9c9c9c;
+}
+th {
+    color: #dedede;
+    background-color: #105352;
+}
+
+td button{
+    font-size: large;
+    border: none;
+    background-color: rgba(255, 235, 205, 0);
+    margin-inline: 8px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+td button:hover{
+    color: #37adab;
+}
