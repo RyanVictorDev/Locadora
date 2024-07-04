@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
-    <link rel="stylesheet" href="../css/cadastroUsuarios.css">
-    <title>Cadastro de usuarios</title>
+    <link rel="stylesheet" href="../css/cadastroLocatarios.css">
+    <title>Cadastro de locatarios</title>
 </head>
 <body>
     <nav id="sidebar">
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                <li class="sideItem active">
+                <li class="sideItem">
                     <a href="#">
                         <i class="fa-solid fa-user-group"></i>
                         <span class="itemDescription">
@@ -44,7 +44,7 @@
                     </a>
                 </li>
 
-                <li class="sideItem">
+                <li class="sideItem active">
                     <a href="#">
                         <i class="fa-solid fa-address-book"></i>
                         <span class="itemDescription">
@@ -94,44 +94,47 @@
 
     <main>
         <div class="campoPesquisa">
-            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o nome do usuário"> 
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o nome do locatário"> 
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <p class="tituloTable">Usuários do sistema</p>
+        <p class="tituloTable">Lista de locatários</p>
         <table>
             <thead>
                 <tr>
-                    <th>Nome do usuário</th>
-                    <th>Permissão</th>
+                    <th>Nome do locatário</th>
                     <th>Email</th>
+                    <th>Telefone</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>João Silva</td>
-                    <td>Admin</td>
                     <td>joao.silva@example.com</td>
+                    <td>(xx) xxxxxxxxx</td>
                     <td>
+                        <button><i class="fa-solid fa-eye"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
                         <button><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>Maria Souza</td>
-                    <td>Usuário</td>
                     <td>maria.souza@example.com</td>
+                    <td>(xx) xxxxxxxxx</td>
                     <td>
+                        <button><i class="fa-solid fa-eye"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
                         <button><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
                     <td>Pedro Oliveira</td>
-                    <td>Moderador</td>
                     <td>pedro.oliveira@example.com</td>
+                    <td>(xx) xxxxxxxxx</td>
                     <td>
+                        <button><i class="fa-solid fa-eye"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
                         <button><i class="fa-solid fa-trash"></i></button>
                     </td>

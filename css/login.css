@@ -55,7 +55,8 @@ form button{
     cursor: pointer;
 }
 
-p{
+a{
+    text-decoration: none;
     margin-top: 30px;
     margin-inline: auto;
 }
