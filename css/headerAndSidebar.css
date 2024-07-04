@@ -60,6 +60,8 @@ body{
 }
 
 .sideItem{
+    display: flex;
+    gap: 10px;
     border-radius: 8px;
     padding: 14px;
     cursor: pointer;

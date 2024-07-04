@@ -21,6 +21,10 @@ th {
     background-color: #105352;
 }
 
+td{
+    font-size: small;
+}
+
 td button{
     color: rgb(95, 95, 95);
     font-size: large;

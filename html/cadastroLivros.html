@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
-    <link rel="stylesheet" href="../css/cadastroUsuarios.css">
-    <title>Cadastro de usuarios</title>
+    <link rel="stylesheet" href="../css/cadastroLivros.css">
+    <title>Cadastro de Livros</title>
 </head>
 <body>
     <nav id="sidebar">
@@ -35,9 +35,8 @@
                     </li>
                 </a>
 
-                <a href="#">
-                    <li class="sideItem active">
-                        
+                <a href="cadastroUsuarios.html">
+                    <li class="sideItem">
                             <i class="fa-solid fa-user-group"></i>
                             <span class="itemDescription">
                                 Cadastro de usuários
@@ -52,19 +51,19 @@
                                 Cadastro de Locatários
                             </span>
                     </li>
-                </a> 
+                </a>
 
                 <a href="cadastroEditoras.html">
                     <li class="sideItem">
                             <i class="fa-solid fa-marker"></i>
                             <span class="itemDescription">
                                 Cadastro de Editoras
-                            </span>  
+                            </span>
                     </li>
                 </a>
 
-                <a href="cadastroLivros.html">
-                    <li class="sideItem">
+                <a href="#">
+                    <li class="sideItem active">
                             <i class="fa-solid fa-book"></i>
                             <span class="itemDescription">
                                 Cadastro de Livros
@@ -95,44 +94,69 @@
 
     <main>
         <div class="campoPesquisa">
-            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o nome do usuário"> 
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o titulo do livro"> 
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <p class="tituloTable">Usuários do sistema</p>
+        <p class="tituloTable">Catálogo de Livros</p>
         <table>
             <thead>
                 <tr>
-                    <th>Nome do usuário</th>
-                    <th>Permissão</th>
-                    <th>Email</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Editora</th>
+                    <th>Disponíveis</th>
+                    <th>Alugados</th>
+                    <th>Lançamento</th>
+                    <th>Status</th>
                     <th>Ações</th>
+
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>João Silva</td>
-                    <td>Admin</td>
-                    <td>joao.silva@example.com</td>
+                    <td>Pica-Pau</td>
+                    <td>José da Fonseca</td>
+                    <td>Editorando</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>dd-mm-aaaa</td>
+                    <td>Disponível</td>
+
                     <td>
+                        <button><i class="fa-solid fa-book-bookmark"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
                         <button><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
+
                 <tr>
-                    <td>Maria Souza</td>
-                    <td>Usuário</td>
-                    <td>maria.souza@example.com</td>
+                    <td>Pica-Pau</td>
+                    <td>José da Fonseca</td>
+                    <td>Editorando</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>dd-mm-aaaa</td>
+                    <td>Disponível</td>
+
                     <td>
+                        <button><i class="fa-solid fa-book-bookmark"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
                         <button><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
+
                 <tr>
-                    <td>Pedro Oliveira</td>
-                    <td>Moderador</td>
-                    <td>pedro.oliveira@example.com</td>
+                    <td>Pica-Pau</td>
+                    <td>José da Fonseca</td>
+                    <td>Editorando</td>
+                    <td>50</td>
+                    <td>50</td>
+                    <td>dd-mm-aaaa</td>
+                    <td>Disponível</td>
+
                     <td>
+                        <button><i class="fa-solid fa-book-bookmark"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
                         <button><i class="fa-solid fa-trash"></i></button>
                     </td>
