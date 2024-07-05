@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
+    <link rel="stylesheet" href="../css/modais.css">
     <link rel="stylesheet" href="../css/cadastroUsuarios.css">
     <title>Cadastro de Editoras</title>
 </head>
@@ -83,7 +84,7 @@
         </div>
 
         <div id="logout">
-            <button id="logoutBtn">
+            <button id="logoutBtn" onclick="window.location.href='login.html'">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span class="itemDescription">Logout</span>
             </button>
@@ -94,7 +95,7 @@
 
     <main>
         <div class="campoPesquisa">
-            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o nome da "> 
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o nome da editora"> 
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
@@ -116,7 +117,7 @@
                     <td>
                         <button><i class="fa-solid fa-eye"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button id="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -126,7 +127,7 @@
                     <td>
                         <button><i class="fa-solid fa-eye"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button id="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -136,13 +137,28 @@
                     <td>
                         <button><i class="fa-solid fa-eye"></i></button>
                         <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button id="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <button class="cadastrarBtn">Cadastrar</button>
+
+        <div id="fade" class="hide"></div>
+
+        <div id="modalExcluir" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja excluir esta editora?</h2>
+                <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modaBody">
+                <p>Após excluir, todos os dados desta editora (incluindo livros)
+                    serão apagados para sempre.</p>
+            </div>
+        </div>
     </main>
+    <script src="../js/script.js"></script>
+
 </body>
 </html>
