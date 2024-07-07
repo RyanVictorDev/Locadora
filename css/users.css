@@ -1,0 +1,78 @@
+.tituloTable{
+    text-align: center;
+    font-size: x-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+table {
+    margin-inline: auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 25px;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #9c9c9c;
+}
+th {
+    color: #dedede;
+    background-color: #105352;
+}
+
+td{
+    font-size: small;
+}
+
+td button{
+    color: rgb(95, 95, 95);
+    font-size: large;
+    border: none;
+    background-color: rgba(255, 235, 205, 0);
+    margin-inline: 8px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+td button:hover{
+    color: #37adab;
+}
+
+.campoPesquisa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 80%;
+    margin-inline: auto;
+    margin-bottom: 20px;
+}
+
+.campoPesquisa input{
+    width: 80%;
+    padding: 10px;
+    border-style: dashed;
+    border-radius: 10px;
+    background-color: rgba(240, 248, 255, 0);
+}
+
+.campoPesquisa i{
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cadastrarBtn{
+    margin-inline: auto;
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    background-color: #105352;
+    color: #fff;
+    font-size: x-large;
+    font-weight: bold;
+    width: max-content;
+    border: none;
+    cursor: pointer;
+    
+}

@@ -54,7 +54,42 @@
     margin-bottom: 10px;
 }
 
+.modalBody{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 #fade.hide, #modalExcluir.hide{
     opacity: 0;
     pointer-events: none;
+}
+
+.opcoes{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.excluirBtn{
+    border-radius: 10px;
+    border: none;
+    width: 35%;
+    padding: 1rem;
+    color: #dedede;
+    font-size: large;
+    font-weight: bold;
+    background-color: #9F2121;
+    cursor: pointer;
+}
+
+.cancelarBtn{
+    border-radius: 10px;
+    border: none;
+    width: 35%;
+    padding: 1rem;
+    color: #dedede;
+    font-size: large;
+    font-weight: bold;
+    background-color: #303030;
+    cursor: pointer;
 }
