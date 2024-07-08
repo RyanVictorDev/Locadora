@@ -84,7 +84,7 @@
         </div>
 
         <div id="logout">
-            <button id="logoutBtn" onclick="window.location.href='login.html'">
+            <button id="logoutBtn" onclick="window.location.href='../index.html'">
                 <i class="fa-solid fa-right-from-bracket"></i>
                 <span class="itemDescription">Logout</span>
             </button>
@@ -104,8 +104,8 @@
             <thead>
                 <tr>
                     <th>Nome da editora</th>
-                    <th>Telefone</th>
-                    <th>Email</th>
+                    <!-- <th>Telefone</th>
+                    <th>Email</th> -->
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -135,15 +135,33 @@
             <div class="modalBody">
                 <p>Após excluir, todos os dados desta editora (incluindo livros)
                     serão apagados para sempre.</p>
-
                 <div class="opcoes">
                     <button class="excluirBtn">Excluir editora</button>
                     <button class="cancelarBtn">Cancelar</button>
                 </div>
             </div>
         </div>
+        
+        <div id="fadeEditar" class="hide"></div>
+        
+        <div id="modalEditarConfirm" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja editar esta editora?</h2>
+                <button id="closeBtnEditar"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após editar, todos os dados anteriores desta editora serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="editarBtn">Editar editora</button>
+                    <button class="cancelarBtnEditar">Cancelar</button>
+                </div>
+            </div>
+        </div>
+            
+
     </main>
-    <script src="../js/script.js"></script>
+
+    <!-- <script src="../js/script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js" integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="../service/editoras.js"></script>
 </body>

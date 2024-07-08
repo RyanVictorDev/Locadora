@@ -1,67 +1,90 @@
-import { apiClient } from "./cliente.js";
-
 document.addEventListener("DOMContentLoaded", () => {
-    // Função para buscar os dados da API e preencher a tabela
-    function fetchEditoras() {
-        
+    const token = localStorage.getItem('apiToken');
 
-        apiClient.get("/publisher/1")
-            .then(response => {
-                console.log(response.data)
-                const editora = response.data;
-                const tableBody = document.querySelector("#editorasTable tbody");
-
-                tableBody.innerHTML = '';   
-
-                    const row = document.createElement('tr');
-
-                    row.innerHTML = `
-                        <td>${editora.name}</td>
-                        <td>${editora.telephone}</td>
-                        <td>${editora.email}</td>
-                        <td>
-                            <button><i class="fa-solid fa-eye"></i></button>
-                            <button><i class="fa-solid fa-pencil"></i></button>
-                            <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
-                        </td>
-                    `;
-
-                    tableBody.appendChild(row);
-                
-
-                // Adiciona os event listeners para os botões de exclusão
-                addModalEventListeners();
-            })
-            .catch(error => {
-                console.error('Erro ao buscar as editoras:', error);
-            });
-    }
-
-    // Função para adicionar event listeners aos botões de exclusão
-    function addModalEventListeners() {
-        const openModalBtns = document.querySelectorAll(".openModalExcluir");
-        const closeModalBtn = document.querySelector("#closeBtn");
-        const modal = document.querySelector("#modalExcluir");
-        const fade = document.querySelector("#fade");
-
-        const toggleModal = () => {
-            modal.classList.toggle("hide");
-            fade.classList.toggle("hide");
-        };
-
-        openModalBtns.forEach(button => {
-            button.addEventListener("click", toggleModal);
+    if (token != null) {
+        const apiClient = axios.create({
+            baseURL: "https://livraria-api.altislabtech.com.br",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
         });
 
-        closeModalBtn.addEventListener("click", toggleModal);
-        fade.addEventListener("click", toggleModal);
-    }
+        function fetchEditoras() {
+            apiClient.get("/publisher")
+                .then(response => {
+                    const editoras = response.data.content;
+                    const tableBody = document.querySelector("#editorasTable tbody");
 
-    // Verifica se o apiClient está definido antes de chamar fetchEditoras
-    const checkApiClient = setInterval(() => {
-        if (apiClient) {
-            clearInterval(checkApiClient);
-            fetchEditoras();
+                    tableBody.innerHTML = '';   
+
+                    editoras.forEach(editora => {
+                        const row = document.createElement('tr');
+
+                        row.innerHTML = `
+                            <td>${editora.name}</td>
+                            <td>
+                                <button><i class="fa-solid fa-eye"></i></button>
+                                <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                                <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        `;
+
+                        tableBody.appendChild(row);
+                    });
+
+                    addModalEventListeners();
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar as editoras:', error);
+                });
         }
-    }, 100);
+
+        function addModalEventListeners() {
+            const openModalExcluirBtns = document.querySelectorAll(".openModalExcluir");
+            const openModalEditarBtns = document.querySelectorAll(".openModalEditar");
+            const closeModalExcluir = document.querySelector("#closeBtn");
+            const closeModalEditar = document.querySelector("#closeBtnEditar");
+            const modalExcluir = document.querySelector("#modalExcluir");
+            const modalEditar = document.querySelector("#modalEditarConfirm");
+            const fade = document.querySelector("#fade");
+            const fadeEditar = document.querySelector("#fadeEditar");
+            const cancelarExcluir = document.querySelector(".cancelarBtn");
+            const cancelarEditar = document.querySelector(".cancelarBtnEditar");
+
+            const toggleModalExcluir = () => {
+                modalExcluir.classList.toggle("hide");
+                fade.classList.toggle("hide");
+            };
+
+            openModalExcluirBtns.forEach(button => {
+                button.addEventListener("click", toggleModalExcluir);
+            });
+            
+            closeModalExcluir.addEventListener("click", toggleModalExcluir);
+            fade.addEventListener("click", toggleModalExcluir);
+            cancelarExcluir.addEventListener("click", toggleModalExcluir);
+
+            const toggleModalEditar = () => {
+                modalEditar.classList.toggle("hide");
+                fadeEditar.classList.toggle("hide");
+            };
+
+            openModalEditarBtns.forEach(button => {
+                button.addEventListener("click", toggleModalEditar);
+            });
+
+            closeModalEditar.addEventListener("click", toggleModalEditar);
+            fadeEditar.addEventListener("click", toggleModalEditar);
+            cancelarEditar.addEventListener("click", toggleModalEditar);
+        }
+
+        const checkApiClient = setInterval(() => {
+            if (apiClient) {
+                clearInterval(checkApiClient);
+                fetchEditoras();
+            }
+        }, 100);    
+    } else {
+        window.location.href = "../index.html";
+    }
 });

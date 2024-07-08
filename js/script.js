@@ -4,15 +4,15 @@ const modal = document.querySelector("#modalExcluir");
 const fade = document.querySelector("#fade");
 const cancelar = document.querySelector(".cancelarBtn");
 
-const toggleModal = () => {
-    modal.classList.toggle("hide");
-    fade.classList.toggle("hide");
-}
+// const toggleModal = () => {
+//     modal.classList.toggle("hide");
+//     fade.classList.toggle("hide");
+// }
 
-[closeModalBtn, cancelar, fade].forEach(element => {
-    element.addEventListener("click", () => toggleModal());
-});
+// [closeModalBtn, cancelar, fade].forEach(element => {
+//     element.addEventListener("click", () => toggleModal());
+// });
 
-openModalExcluir.forEach(button => {
-    button.addEventListener("click", toggleModal);
-});
+// openModalExcluir.forEach(button => {
+//     button.addEventListener("click", toggleModal);
+// });
