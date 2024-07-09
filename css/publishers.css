@@ -1,8 +1,18 @@
+.tableHeader{
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-inline: auto;
+    width: 80%;
+    padding-left: 2rem;
+    align-items: center;
+    justify-content: left;
+}
+
 .tituloTable{
     text-align: center;
     font-size: x-large;
     font-weight: bold;
-    margin-bottom: 20px;
 }
 
 table {
@@ -52,7 +62,6 @@ td button:hover{
 .campoPesquisa input{
     width: 80%;
     padding: 10px;
-    border-style: dashed;
     border-radius: 10px;
     background-color: rgba(240, 248, 255, 0);
 }
@@ -63,16 +72,12 @@ td button:hover{
 }
 
 .cadastrarBtn{
-    margin-inline: auto;
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 20px;
+    padding: 8px;
+    border-radius: 10px;
     background-color: #105352;
     color: #fff;
-    font-size: x-large;
+    font-size: small;
     font-weight: bold;
-    width: max-content;
     border: none;
     cursor: pointer;
-    
 }

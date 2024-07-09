@@ -40,7 +40,7 @@
                     <li class="sideItem">
                             <i class="fa-solid fa-user-group"></i>
                             <span class="itemDescription">
-                                Cadastro de usuários
+                                Controle de usuários
                             </span>
                     </li>
                 </a>
@@ -49,7 +49,7 @@
                     <li class="sideItem">
                             <i class="fa-solid fa-address-book"></i>
                             <span class="itemDescription">
-                                Cadastro de Locatários
+                                Controle de Locatários
                             </span>
                     </li>
                 </a>
@@ -58,7 +58,7 @@
                     <li class="sideItem active">
                             <i class="fa-solid fa-marker"></i>
                             <span class="itemDescription">
-                                Cadastro de Editoras
+                                Controle de Editoras
                             </span>
                     </li>
                 </a>
@@ -67,7 +67,7 @@
                     <li class="sideItem">
                             <i class="fa-solid fa-book"></i>
                             <span class="itemDescription">
-                                Cadastro de Livros
+                                Controle de Livros
                             </span>
                     </li>
                 </a>
@@ -95,35 +95,27 @@
 
     <main>
         <div class="campoPesquisa">
-            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o nome da editora"> 
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Pesquisa..."> 
             <i class="fa-solid fa-magnifying-glass"></i>
         </div>
 
-        <p class="tituloTable">Lista de Editoras</p>
+        <div class="tableHeader">
+            <p class="tituloTable">Editoras</p>
+            <button class="cadastrarBtn">Cadastrar</button>
+        </div>
+
         <table id="editorasTable">
             <thead>
                 <tr>
                     <th>Nome da editora</th>
-                    <!-- <th>Telefone</th>
-                    <th>Email</th> -->
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <!-- <td>Editorando</td>
-                    <td>(xx) xxxxxxxxx</td>
-                    <td>editorando@example.com</td> -->
-                    <!-- <td>
-                        <button><i class="fa-solid fa-eye"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
-                    </td> -->
                 </tr>
             </tbody>
         </table>
-
-        <button class="cadastrarBtn">Cadastrar</button>
 
         <div id="fade" class="hide"></div>
 
@@ -133,8 +125,7 @@
                 <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <div class="modalBody">
-                <p>Após excluir, todos os dados desta editora (incluindo livros)
-                    serão apagados para sempre.</p>
+                <p>Após excluir, todos os dados desta editora (incluindo livros) serão apagados para sempre.</p>
                 <div class="opcoes">
                     <button class="excluirBtn">Excluir editora</button>
                     <button class="cancelarBtn">Cancelar</button>
@@ -157,11 +148,8 @@
                 </div>
             </div>
         </div>
-            
-
     </main>
 
-    <!-- <script src="../js/script.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js" integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="../service/editoras.js"></script>
 </body>
