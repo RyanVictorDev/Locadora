@@ -14,13 +14,13 @@
     opacity: 1;
 }
 
-#fade, #fadeEditar, #fadeEditarConfirm, #modal{
+#fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes, #modal{
     transition: .5s;
     opacity: 1;
     pointer-events: all;
 }
 
-#fade, #fadeEditar, #fadeEditarConfirm{
+#fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes{
     position: fixed;
     top: 0;
     left: 0;
@@ -60,7 +60,7 @@
     gap: 3vh;
 }
 
-#fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide{
+#fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide, #modalDetalhes.hide, #fadeDetalhes.hide{
     opacity: 0;
     pointer-events: none;
 }
@@ -183,4 +183,59 @@ label{
     font-weight: bold;
     background-color: #105352;
     cursor: pointer;
+}
+
+/* Modal detalhes */
+
+#modalDetalhes{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 40%;
+    min-height: 35%;
+    max-width: 90%;
+    padding: 1.2rem;
+    border: solid black 1px;
+    border-radius: 15px;
+    z-index: 51;
+    background-color: #d4d4d4;
+}
+
+.modalBodyDetalhes{
+    display: flex;
+    margin-inline: auto;
+    padding: 0.5rem;
+    gap: 1rem;
+    flex-direction: column;
+    width: 80%;
+
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.inforEditora{
+    display: flex;
+    margin-left: 0;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.inforEditora p{
+    margin-left: 1.5rem;
+}
+
+.inforEditoraTitle{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: bold;
 }
