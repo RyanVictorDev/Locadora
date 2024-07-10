@@ -40,16 +40,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function addModalEventListeners() {
-            const openModalExcluirBtns = document.querySelectorAll(".openModalExcluir");
-            const openModalEditarBtns = document.querySelectorAll(".openModalEditar");
-            const closeModalExcluir = document.querySelector("#closeBtn");
-            const closeModalEditar = document.querySelector("#closeBtnEditar");
             const modalExcluir = document.querySelector("#modalExcluir");
-            const modalEditar = document.querySelector("#modalEditarConfirm");
-            const fade = document.querySelector("#fade");
-            const fadeEditar = document.querySelector("#fadeEditar");
+            const openModalExcluirBtns = document.querySelectorAll(".openModalExcluir");
+            const closeModalExcluir = document.querySelector("#closeBtn");
             const cancelarExcluir = document.querySelector(".cancelarBtn");
-            const cancelarEditar = document.querySelector(".cancelarBtnEditar");
+            const excluirBtn = document.querySelector(".excluirBtn")
+            const fade = document.querySelector("#fade");
+
+            const modalEditar = document.querySelector("#modalEditar");
+            const openModalEditarBtns = document.querySelectorAll(".openModalEditar");
+            const closeModalEditar = document.querySelector("#closeBtnEditar");
+            const fadeEditar = document.querySelector("#fadeEditar");
+            const openModalEditarConfirm = document.querySelectorAll(".salvarEditarBtn")
+            const cancelarEditarBtn = document.querySelector(".cancelarEditarBtn");
+
+            const modalEditarConfirm = document.querySelector("#modalEditarConfirm");
+            const closeModalEditarConfirm = document.querySelector("#closeBtnEditarConfirm");
+            const editarBtnConfirm = document.querySelector(".editarBtnConfirm")
+            const cancelarEditarConfirm = document.querySelector(".cancelarBtnEditarConfirm");
+            const fadeEditarConfirm = document.querySelector("#fadeEditarConfirm");
 
             const toggleModalExcluir = () => {
                 modalExcluir.classList.toggle("hide");
@@ -62,7 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
             
             closeModalExcluir.addEventListener("click", toggleModalExcluir);
             fade.addEventListener("click", toggleModalExcluir);
+            excluirBtn.addEventListener("click", toggleModalExcluir);
             cancelarExcluir.addEventListener("click", toggleModalExcluir);
+
 
             const toggleModalEditar = () => {
                 modalEditar.classList.toggle("hide");
@@ -75,8 +86,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
             closeModalEditar.addEventListener("click", toggleModalEditar);
             fadeEditar.addEventListener("click", toggleModalEditar);
-            cancelarEditar.addEventListener("click", toggleModalEditar);
+            cancelarEditarBtn.addEventListener("click", toggleModalEditar);
+
+
+            const toggleModalEditarConfirm = () => {
+                modalEditar.classList.toggle("hide");
+                fadeEditar.classList.toggle("hide");
+                modalEditarConfirm.classList.toggle("hide");
+                fadeEditarConfirm.classList.toggle("hide");
+            };
+
+            openModalEditarConfirm.forEach(button => {
+                button.addEventListener("click", toggleModalEditarConfirm);
+            });
+
+            closeModalEditarConfirm.addEventListener("click", toggleModalEditarConfirm);
+            fadeEditarConfirm.addEventListener("click", toggleModalEditarConfirm);
+            cancelarEditarConfirm.addEventListener("click", toggleModalEditarConfirm);
+
+            const confirmEdit = () => {
+                modalEditarConfirm.classList.toggle("hide");
+                fadeEditarConfirm.classList.toggle("hide");
+            };
+
+            editarBtnConfirm.addEventListener("click", confirmEdit);
         }
+
+
 
         const checkApiClient = setInterval(() => {
             if (apiClient) {

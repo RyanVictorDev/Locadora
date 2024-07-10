@@ -1,4 +1,4 @@
-#closeBtn, #closeBtnEditar{
+#closeBtn, #closeBtnEditarConfirm{
     background-color: rgba(0, 0, 255, 0);
     padding: .6rem 1.2rem;
     color: #fff;
@@ -10,17 +10,17 @@
     transition: all 0.5s;
 }
 
-#closeBtn:hover{
+#closeBtn:hover, #closeBtnEditar, #closeBtnEditarConfirm{
     opacity: 1;
 }
 
-#fade, #modal{
+#fade, #fadeEditar, #fadeEditarConfirm, #modal{
     transition: .5s;
     opacity: 1;
     pointer-events: all;
 }
 
-#fade, #fadeEditar{
+#fade, #fadeEditar, #fadeEditarConfirm{
     position: fixed;
     top: 0;
     left: 0;
@@ -60,7 +60,7 @@
     gap: 3vh;
 }
 
-#fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditar.hide{
+#fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide{
     opacity: 0;
     pointer-events: none;
 }
@@ -70,7 +70,7 @@
     justify-content: space-evenly;
 }
 
-.excluirBtn, .editarBtn{
+.excluirBtn, .editarBtnConfirm{
     border-radius: 10px;
     border: none;
     width: 35%;
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-.cancelarBtn, .cancelarBtnEditar{
+.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm{
     border-radius: 10px;
     border: none;
     width: 35%;
@@ -92,5 +92,95 @@
     font-size: 1.5vw;
     font-weight: bold;
     background-color: #303030;
+    cursor: pointer;
+}
+
+/* Modal editar */
+
+#modalEditar{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 40%;
+    min-height: 35%;
+    max-width: 90%;
+    padding: 1.2rem;
+    border: solid black 1px;
+    border-radius: 15px;
+    z-index: 51;
+    background-color: #d4d4d4;
+}
+
+.modalHeaderEditar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#closeBtnEditar{
+    background-color: rgba(0, 0, 255, 0);
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: .9;
+    font-size: 1rem;
+    transition: all 0.5s;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.modalHeaderEditar h2{
+    display: flex;
+    margin-top: -5%;
+    align-self: center;
+}
+
+.modalBodyEditar{
+    display: flex;
+    flex-direction: column;
+}
+
+.modalBodyEditar form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+form input{
+    align-self: center;
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(240, 248, 255, 0);
+    margin-bottom: 2%;
+}
+
+label{
+    display: flex;
+    gap: 2%;
+    margin-bottom: 0.5%;
+    margin-left: 12%;
+    font-weight: bold;
+}
+
+.opcoesEditar{
+    display: flex;
+    margin-top: 2%;
+    justify-content: space-evenly;
+}
+
+.salvarEditarBtn{
+    border-radius: 10px;
+    border: none;
+    width: 35%;
+    padding: 1rem;
+    color: #dedede;
+    font-size: 1.5vw;
+    font-weight: bold;
+    background-color: #105352;
     cursor: pointer;
 }
