@@ -10,7 +10,7 @@
     transition: all 0.5s;
 }
 
-#closeBtn:hover, #closeBtnEditar, #closeBtnEditarConfirm{
+#closeBtn:hover, #closeBtnEditar, #closeBtnEditarConfirm, #closeBtnDetalhes{
     opacity: 1;
 }
 
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm{
+.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm, .sairDetalhesBtn{
     border-radius: 10px;
     border: none;
     width: 35%;
@@ -202,8 +202,34 @@ label{
     background-color: #d4d4d4;
 }
 
-.modalBodyDetalhes{
+#closeBtnDetalhes{
+    background-color: rgba(0, 0, 255, 0);
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: .9;
+    font-size: 1rem;
+    transition: all 0.5s;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.modalHeaderDetalhes{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.modalHeaderDetalhes h2{
+    display: flex;
+    margin-top: -5%;
+    align-self: center;
+}
+
+.modalBodyDetalhes{
+    display: flex;  
     margin-inline: auto;
     padding: 0.5rem;
     gap: 1rem;
@@ -219,14 +245,14 @@ label{
 
 .row{
     display: flex;
-    justify-content: space-evenly;
+    margin-left: 0;
+    gap: 15%;
 }
 
 .inforEditora{
     display: flex;
     margin-left: 0;
     flex-direction: column;
-    width: fit-content;
 }
 
 .inforEditora p{

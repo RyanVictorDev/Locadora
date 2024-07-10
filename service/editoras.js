@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         row.innerHTML = `
                             <td>${editora.name}</td>
                             <td>
-                                <button><i class="fa-solid fa-eye"></i></button>
+                                <button class="openModalDetalhes"><i class="fa-solid fa-eye"></i></button>
                                 <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
                                 <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                             </td>
@@ -59,6 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const editarBtnConfirm = document.querySelector(".editarBtnConfirm")
             const cancelarEditarConfirm = document.querySelector(".cancelarBtnEditarConfirm");
             const fadeEditarConfirm = document.querySelector("#fadeEditarConfirm");
+
+            const modalDetalhes = document.querySelector("#modalDetalhes");
+            const openModalDetalhesBtn = document.querySelectorAll(".openModalDetalhes");
+            const closeModalDetalhes = document.querySelector("#closeBtnDetalhes");
+            const sairDetalhesBtn = document.querySelector(".sairDetalhesBtn");
+            const fadeDetalhes = document.querySelector("#fadeDetalhes");
 
             const toggleModalExcluir = () => {
                 modalExcluir.classList.toggle("hide");
@@ -110,6 +116,20 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             editarBtnConfirm.addEventListener("click", confirmEdit);
+
+
+            const exitDetails = () => {
+                modalDetalhes.classList.toggle("hide");
+                fadeDetalhes.classList.toggle("hide");
+            }
+
+            openModalDetalhesBtn.forEach(button => {
+                button.addEventListener("click", exitDetails);
+            });
+
+            sairDetalhesBtn.addEventListener("click", exitDetails);
+            fadeDetalhes.addEventListener("click", exitDetails);
+            closeModalDetalhes.addEventListener("click", exitDetails);
         }
 
 
