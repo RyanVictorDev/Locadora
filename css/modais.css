@@ -14,13 +14,13 @@
     opacity: 1;
 }
 
-#fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes, #modal{
+#fadeCadastrar, #fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes, #modal{
     transition: .5s;
     opacity: 1;
     pointer-events: all;
 }
 
-#fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes{
+#fadeCadastrar, #fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes{
     position: fixed;
     top: 0;
     left: 0;
@@ -60,7 +60,7 @@
     gap: 3vh;
 }
 
-#fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide, #modalDetalhes.hide, #fadeDetalhes.hide{
+#fadeCadastrar.hide, #modalCadastrar.hide, #fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide, #modalDetalhes.hide, #fadeDetalhes.hide{
     opacity: 0;
     pointer-events: none;
 }
@@ -83,7 +83,7 @@
     cursor: pointer;
 }
 
-.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm{
+.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm, .cancelarCadastroBtn{
     border-radius: 10px;
     border: none;
     width: 35%;
@@ -235,7 +235,6 @@ label{
     gap: 1rem;
     flex-direction: column;
     width: 80%;
-
 }
 
 .detalhes{
@@ -264,6 +263,78 @@ label{
 }
 
 .sairDetalhesBtn{
+    border-radius: 10px;
+    border: none;
+    width: 35%;
+    padding: 1rem;
+    color: #dedede;
+    font-size: 1.5vw;
+    font-weight: bold;
+    background-color: #105352;
+    cursor: pointer;
+}
+
+/* Modal cadastro */
+#modalCadastrar{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 40%;
+    min-height: 35%;
+    max-width: 90%;
+    padding: 1.2rem;
+    border: solid black 1px;
+    border-radius: 15px;
+    z-index: 51;
+    background-color: #d4d4d4;
+}
+
+.modalHeaderCadastrar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#closeBtnCadastrar{
+    background-color: rgba(0, 0, 255, 0);
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: .9;
+    font-size: 1rem;
+    transition: all 0.5s;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.modalHeaderCadastrar h2{
+    display: flex;
+    margin-top: -5%;
+    align-self: center;
+}
+
+.modalBodyCadastrar{
+    display: flex;
+    flex-direction: column;
+}
+
+.modalBodyCadastrar form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.opcoesCadastrar{
+    display: flex;
+    margin-top: 2%;
+    justify-content: space-evenly;
+}
+
+.salvarCadastroBtn{
     border-radius: 10px;
     border: none;
     width: 35%;

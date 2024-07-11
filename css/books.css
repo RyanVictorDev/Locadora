@@ -4,7 +4,6 @@
     margin-bottom: 0.5rem;
     margin-inline: auto;
     width: 80%;
-    padding-left: 2rem;
     align-items: center;
     justify-content: left;
 }
@@ -13,11 +12,13 @@
     text-align: center;
     font-size: x-large;
     font-weight: bold;
+    padding-right: 0.5rem;
+    border-right: solid 2px rgba(156, 156, 156, 0.459);
 }
 
 table {
     margin-inline: auto;
-    width: 85%;
+    width: 80%;
     border-collapse: collapse;
     border-radius: 25px;
 }
@@ -54,13 +55,12 @@ td button:hover{
     justify-content: center;
     align-items: center;
     gap: 8px;
-    width: 80%;
+    width: 100%;
     margin-inline: auto;
-    margin-bottom: 20px;
 }
 
 .campoPesquisa input{
-    width: 80%;
+    width: 100%;
     padding: 10px;
     border-radius: 10px;
     background-color: rgba(240, 248, 255, 0);

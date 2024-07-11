@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('apiToken', token);
 
             // Redirecionando para a home
-            window.location.href = "../html/dashboard.html";
+            window.location.href = "./html/dashboard.html";
         })
         .catch(error => {
             console.error('Erro ao fazer login:', error);

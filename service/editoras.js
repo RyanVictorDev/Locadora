@@ -40,6 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function addModalEventListeners() {
+            const modalCadastrar = document.querySelector("#modalCadastrar");
+            const formCadastrar = document.querySelector("#formCadastro")
+            const openModalCadastrar = document.querySelectorAll(".cadastrarBtn");
+            const closeModalCadastrar = document.querySelector("#closeBtnCadastrar");
+            const cancelarCadastrar = document.querySelector(".cancelarCadastroBtn");
+            const cadastrarBtn = document.querySelector(".salvarCadastroBtn");
+            const fadeCadastrar = document.querySelector("#fadeCadastrar")
+
             const modalExcluir = document.querySelector("#modalExcluir");
             const openModalExcluirBtns = document.querySelectorAll(".openModalExcluir");
             const closeModalExcluir = document.querySelector("#closeBtn");
@@ -65,6 +73,39 @@ document.addEventListener("DOMContentLoaded", () => {
             const closeModalDetalhes = document.querySelector("#closeBtnDetalhes");
             const sairDetalhesBtn = document.querySelector(".sairDetalhesBtn");
             const fadeDetalhes = document.querySelector("#fadeDetalhes");
+
+            const toggleModalCadastrar = () => {
+                modalCadastrar.classList.toggle("hide");
+                fadeCadastrar.classList.toggle("hide");
+            };
+
+            openModalCadastrar.forEach(button => {
+                button.addEventListener("click", toggleModalCadastrar);
+            });
+
+            closeModalCadastrar.addEventListener("click", toggleModalCadastrar);
+            fadeCadastrar.addEventListener("click", toggleModalCadastrar);
+            cancelarCadastrar.addEventListener("click", toggleModalCadastrar);
+
+            // checkando se o formulario foi preenchido
+            formCadastrar.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const camposObrigatorios = formCadastrar.querySelectorAll('[required]');
+                let camposPreenchidos = true;
+
+                camposObrigatorios.forEach(field => {
+                    if (!field.value){
+                        camposPreenchidos = false;
+                    }
+                });
+
+                if (camposPreenchidos){
+                    cadastrarBtn.addEventListener("click", toggleModalCadastrar)
+                    toggleModalCadastrar();
+                }
+            })
+
 
             const toggleModalExcluir = () => {
                 modalExcluir.classList.toggle("hide");
