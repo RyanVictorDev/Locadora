@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
+    <link rel="stylesheet" href="../css/modais.css">
     <link rel="stylesheet" href="../css/renters.css">
     <title>Cadastro de locatarios</title>
 </head>
@@ -118,9 +119,9 @@
                     <td>joao.silva@example.com</td>
                     <td>(xx) xxxxxxxxx</td>
                     <td>
-                        <button><i class="fa-solid fa-eye"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="openModalDetalhes"><i class="fa-solid fa-eye"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -128,9 +129,9 @@
                     <td>maria.souza@example.com</td>
                     <td>(xx) xxxxxxxxx</td>
                     <td>
-                        <button><i class="fa-solid fa-eye"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="openModalDetalhes"><i class="fa-solid fa-eye"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -138,14 +139,184 @@
                     <td>pedro.oliveira@example.com</td>
                     <td>(xx) xxxxxxxxx</td>
                     <td>
-                        <button><i class="fa-solid fa-eye"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="openModalDetalhes"><i class="fa-solid fa-eye"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
+        <div class="paginacao">
+            <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="paginacaoItem active">1</button>
+            <button class="paginacaoItem">2</button>
+            <button class="paginacaoItem">3</button>
+            <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Modais -->
+        <div id="fadeCadastrar" class="hide"></div>
+
+        <div id="modalCadastrar" class="hide">
+            <div class="modalHeaderCadastrar">
+                <button id="closeBtnCadastrar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Cadastro</h2>
+            </div>
+            <div class="modalBodyCadastrar">
+                <form id="formCadastro">
+                    <label for="username"><i class="fa-solid fa-book"></i>Nome da editora</label>
+                    <input type="text" id="username" name="username" placeholder="Adicione o nome da editora" required>
+                    
+                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                    <input type="email" id="email" name="email" placeholder="Adicione o email da editora" required>
+
+                    <label for="tel"><i class="fa-solid fa-phone"></i>Telefone</label>
+                    <input type="tel" id="tel" name="tel" placeholder="Adicione o telefone da editora" required>
+
+                    <label for="site"><i class="fa-solid fa-globe"></i>Site</label>
+                    <input type="url" id="site" name="site" placeholder="Adicione o site da editora">
+
+                    <div class="opcoesCadastrar">
+                        <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
+                        <button class="cancelarCadastroBtn">Cancelar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div id="fade" class="hide"></div>
+
+        <div id="modalExcluir" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja excluir este locatário?</h2>
+                <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após excluir, todos os dados deste locatário serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="excluirBtn">Excluir locatário</button>
+                    <button class="cancelarBtn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fadeEditar" class="hide"></div>
+
+        <div id="modalEditar" class="hide">
+            <div class="modalHeaderEditar">
+                <button id="closeBtnEditar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Edição</h2>
+            </div>
+            <div class="modalBodyEditar">
+                <form>
+                    <label for="username"><i class="fa-solid fa-book"></i>Nome da editora</label>
+                    <input type="text" id="username" name="username" placeholder="Editora">
+                    
+                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                    <input type="email" id="email" name="email" placeholder="editora@harpercollins.com">
+
+                    <label for="tel"><i class="fa-solid fa-phone"></i>Telefone</label>
+                    <input type="tel" id="tel" name="tel" placeholder="652-207-7000">
+
+                    <label for="site"><i class="fa-solid fa-globe"></i>Site</label>
+                    <input type="url" id="site" name="site" placeholder="edieditora.com">
+                </form>
+                
+                <div class="opcoesEditar">
+                    <button type="" class="salvarEditarBtn">Salvar</button>
+                    <button class="cancelarEditarBtn">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="fadeEditarConfirm" class="hide"></div>
+        
+        <div id="modalEditarConfirm" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja editar este locatário?</h2>
+                <button id="closeBtnEditarConfirm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após editar, todos os dados anteriores deste locatário serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="editarBtnConfirm">Editar editora</button>
+                    <button class="cancelarBtnEditarConfirm">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fadeDetalhes" class="hide"></div>
+
+        <div id="modalDetalhes" class="hide">
+            <div class="modalHeaderDetalhes">
+                <button id="closeBtnDetalhes"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Detalhes</h2>
+            </div>
+
+            <div class="modalBodyDetalhes">
+
+                <div class="detalhesSessao">
+                    <div class="detalhes  ">
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-solid fa-user"></i>Nome do locatário</div>
+                            <p>João Silva</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-solid fa-envelope"></i>Email</div>
+                            <p>joao.silva@example.com</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-solid fa-phone"></i>Telefone</div>
+                            <p>(xx) xxxxxxxxx</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-regular fa-credit-card"></i>CPF</div>
+                            <p>45x.xxx.xxx.65</p>
+                        </div>
+                    </div>
+
+                    <div class="detalhes">
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-regular fa-building"></i>Logradouro</div>
+                            <p>Condominio seu zé</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-solid fa-house"></i>Número da casa</div>
+                            <p>456</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-solid fa-road"></i>Bairro</div>
+                            <p>Horto</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-solid fa-city"></i>Cidade</div>
+                            <p>Maracanaú</p>
+                        </div>
+
+                        <div class="inforEditora">
+                            <div class="inforEditoraTitle"><i class="fa-regular fa-map"></i>Uf</div>
+                            <p>Ceará</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="opcoesEditar">
+                    <button type="" class="sairDetalhesBtn">Sair</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script src="../service/renters.js"></script>
 </body>
 </html>

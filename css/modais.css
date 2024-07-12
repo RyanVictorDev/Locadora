@@ -35,8 +35,8 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    min-width: 40%;
-    min-height: 35%;
+    /* min-width: 40%;
+    min-height: 35%; */
     max-width: 90%;
     padding: 1.2rem;
     border-radius: 15px;
@@ -57,7 +57,7 @@
 .modalBody{
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 1.2rem;
 }
 
 #fadeCadastrar.hide, #modalCadastrar.hide, #fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide, #modalDetalhes.hide, #fadeDetalhes.hide{
@@ -332,6 +332,15 @@ label{
     display: flex;
     margin-top: 2%;
     justify-content: space-evenly;
+}
+
+.radioGroup{
+    display: flex;
+    margin-inline: auto;
+    justify-content: space-around;
+    align-items: center;
+    width: 80%;
+    padding-inline: 5rem;
 }
 
 .salvarCadastroBtn{

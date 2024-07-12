@@ -16,40 +16,6 @@
     border-right: solid 2px rgba(156, 156, 156, 0.459);
 }
 
-table {
-    margin-inline: auto;
-    width: 80%;
-    border-collapse: collapse;
-    border-radius: 25px;
-}
-th, td {
-    padding: 10px;
-    text-align: center;
-    border: 1px solid #9c9c9c;
-}
-th {
-    color: #dedede;
-    background-color: #105352;
-}
-
-td{
-    font-size: small;
-}
-
-td button{
-    font-size: large;
-    color: rgb(95, 95, 95);
-    border: none;
-    background-color: rgba(255, 235, 205, 0);
-    margin-inline: 8px;
-    cursor: pointer;
-    transition: all 0.5s;
-}
-
-td button:hover{
-    color: #37adab;
-}
-
 .campoPesquisa{
     display: flex;
     justify-content: center;
@@ -79,5 +45,77 @@ td button:hover{
     font-size: small;
     font-weight: bold;
     border: none;
+    cursor: pointer;
+}
+
+table {
+    margin-inline: auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-radius: 25px;
+    margin-bottom: 2rem;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #9c9c9c;
+}
+th {
+    color: #dedede;
+    background-color: #105352;
+}
+
+td{
+    font-size: small;
+}
+
+td button{
+    font-size: large;
+    color: rgb(95, 95, 95);
+    border: none;
+    background-color: rgba(255, 235, 205, 0);
+    margin-inline: 8px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+td button:hover{
+    color: #37adab;
+}
+
+.paginacao{
+    display: flex;
+    align-items: center;
+    margin-inline: auto;
+    gap: 1rem;
+}
+
+.chevron{
+    background-color: #00000000;
+    border: none;
+    cursor: pointer;
+}
+
+.paginacaoItem{
+    display: flex;
+    color: #000000;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    box-shadow: 3px 3px 9px 1px rgba(0, 0, 0, 0.29);
+    cursor: pointer;
+}
+
+.paginacaoItem.active{
+    display: flex;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: #105352;
     cursor: pointer;
 }

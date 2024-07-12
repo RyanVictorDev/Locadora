@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
+    <link rel="stylesheet" href="../css/modais.css">
     <link rel="stylesheet" href="../css/users.css">
     <title>Cadastro de usuarios</title>
 </head>
@@ -119,8 +120,8 @@
                     <td>Admin</td>
                     <td>joao.silva@example.com</td>
                     <td>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -128,8 +129,8 @@
                     <td>Usuário</td>
                     <td>maria.souza@example.com</td>
                     <td>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
                 <tr>
@@ -137,13 +138,124 @@
                     <td>Moderador</td>
                     <td>pedro.oliveira@example.com</td>
                     <td>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
+        <div class="paginacao">
+            <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="paginacaoItem active">1</button>
+            <button class="paginacaoItem">2</button>
+            <button class="paginacaoItem">3</button>
+            <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Modais -->
+        <div id="fadeCadastrar" class="hide"></div>
+
+        <div id="modalCadastrar" class="hide">
+            <div class="modalHeaderCadastrar">
+                <button id="closeBtnCadastrar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Cadastro</h2>
+            </div>
+            <div class="modalBodyCadastrar">
+                <form id="formCadastro">
+                    <label for="username"><i class="fa-solid fa-user"></i>Nome do usuário</label>
+                    <input type="text" id="username" name="username" placeholder="Adicione o nome do usuário" required>
+                    
+                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                    <input type="email" id="email" name="email" placeholder="Adicione o email do usuário" required>
+
+                    <label for="site"><i class="fa-solid fa-lock"></i>Senha</label>
+                    <input type="text" id="password" name="password" placeholder="Adicione a senha" required>
+
+                    <label for="site"><i class="fa-solid fa-lock"></i>Confirmar senha</label>
+                    <input type="text" id="passwordConfirm" name="passwordConfirm" placeholder="Confirme a senha" required>
+
+                    <div class="radioGroup">
+                        <label>
+                            <input type="radio" name="role" value="editor">
+                            Editor
+                        </label>
+                        <label>
+                            <input type="radio" name="role" value="locatario">
+                            Locatário
+                        </label>
+                    </div>
+
+                    <div class="opcoesCadastrar">
+                        <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
+                        <button class="cancelarCadastroBtn">Cancelar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div id="fade" class="hide"></div>
+
+        <div id="modalExcluir" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja excluir este usuário?</h2>
+                <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após excluir, todos os dados deste usuário serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="excluirBtn">Excluir usuário</button>
+                    <button class="cancelarBtn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fadeEditar" class="hide"></div>
+
+        <div id="modalEditar" class="hide">
+            <div class="modalHeaderEditar">
+                <button id="closeBtnEditar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Edição</h2>
+            </div>
+            <div class="modalBodyEditar">
+                <form>
+                    <label for="username"><i class="fa-solid fa-user"></i>Nome do usuário</label>
+                    <input type="text" id="username" name="username" placeholder="João Silva">
+                    
+                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                    <input type="email" id="email" name="email" placeholder="joao.silva@example.com	">
+
+                    <label for="site"><i class="fa-solid fa-lock"></i>Senha</label>
+                    <input type="text" id="password" name="password" placeholder="125486">
+                </form>
+                
+                <div class="opcoesEditar">
+                    <button type="" class="salvarEditarBtn">Salvar</button>
+                    <button class="cancelarEditarBtn">Cancelar</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="fadeEditarConfirm" class="hide"></div>
+        
+        <div id="modalEditarConfirm" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja editar este usuário?</h2>
+                <button id="closeBtnEditarConfirm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após editar, todos os dados anteriores deste usuário serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="editarBtnConfirm">Editar usuário</button>
+                    <button class="cancelarBtnEditarConfirm">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script type="module" src="../service/users.js"></script>
 </body>
 </html>

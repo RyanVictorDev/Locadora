@@ -94,8 +94,6 @@
     <header>Locadora</header>
 
     <main>
-
-
         <div class="tableHeader">
             <p class="tituloTable">Editoras</p>
             <button class="cadastrarBtn">Cadastrar</button>
@@ -119,7 +117,46 @@
             </tbody>
         </table>
 
+        <div class="paginacao">
+            <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="paginacaoItem active">1</button>
+            <button class="paginacaoItem">2</button>
+            <button class="paginacaoItem">3</button>
+            <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
         <!-- Modais -->
+        <div id="fadeCadastrar" class="hide"></div>
+
+        <div id="modalCadastrar" class="hide">
+            <div class="modalHeaderCadastrar">
+                <button id="closeBtnCadastrar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Cadastro</h2>
+            </div>
+            <div class="modalBodyCadastrar">
+                <form id="formCadastro">
+                    <label for="username"><i class="fa-solid fa-book"></i>Nome da editora</label>
+                    <input type="text" id="username" name="username" placeholder="Adicione o nome da editora" required>
+                    
+                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                    <input type="email" id="email" name="email" placeholder="Adicione o email da editora" required>
+
+                    <label for="tel"><i class="fa-solid fa-phone"></i>Telefone</label>
+                    <input type="tel" id="tel" name="tel" placeholder="Adicione o telefone da editora" required>
+
+                    <label for="site"><i class="fa-solid fa-globe"></i>Site</label>
+                    <input type="url" id="site" name="site" placeholder="Adicione o site da editora">
+
+                    <div class="opcoesCadastrar">
+                        <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
+                        <button class="cancelarCadastroBtn">Cancelar</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
         <div id="fade" class="hide"></div>
 
         <div id="modalExcluir" class="hide">
@@ -223,38 +260,6 @@
                 </div>
             </div>
         </div>
-
-        <div id="fadeCadastrar" class="hide"></div>
-
-        <div id="modalCadastrar" class="hide">
-            <div class="modalHeaderCadastrar">
-                <button id="closeBtnCadastrar"><i class="fa-solid fa-xmark"></i></button>
-                <h2>Cadastro</h2>
-            </div>
-            <div class="modalBodyCadastrar">
-                <form id="formCadastro">
-                    <label for="username"><i class="fa-solid fa-book"></i>Nome da editora</label>
-                    <input type="text" id="username" name="username" placeholder="Adicione o nome da editora" required>
-                    
-                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
-                    <input type="email" id="email" name="email" placeholder="Adicione o email da editora" required>
-
-                    <label for="tel"><i class="fa-solid fa-phone"></i>Telefone</label>
-                    <input type="tel" id="tel" name="tel" placeholder="Adicione o telefone da editora" required>
-
-                    <label for="site"><i class="fa-solid fa-globe"></i>Site</label>
-                    <input type="url" id="site" name="site" placeholder="Adicione o site da editora">
-
-                    <div class="opcoesCadastrar">
-                        <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
-                        <button class="cancelarCadastroBtn">Cancelar</button>
-                    </div>
-
-                </form>
-
-            </div>
-        </div>
-
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.2/axios.min.js" integrity="sha512-JSCFHhKDilTRRXe9ak/FJ28dcpOJxzQaCd3Xg8MyF6XFjODhy/YMCM8HW0TFDckNHWUewW+kfvhin43hKtJxAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -2,43 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem('apiToken');
 
     if (token != null) {
-        const apiClient = axios.create({
-            baseURL: "https://livraria-api.altislabtech.com.br",
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
-
-        function fetchEditoras() {
-            apiClient.get("/publisher")
-                .then(response => {
-                    const editoras = response.data.content;
-                    const tableBody = document.querySelector("#editorasTable tbody");
-
-                    tableBody.innerHTML = '';   
-
-                    editoras.forEach(editora => {
-                        const row = document.createElement('tr');
-
-                        row.innerHTML = `
-                            <td>${editora.name}</td>
-                            <td>
-                                <button class="openModalDetalhes"><i class="fa-solid fa-eye"></i></button>
-                                <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                                <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
-                            </td>
-                        `;
-
-                        tableBody.appendChild(row);
-                    });
-
-                    addModalEventListeners();
-                })
-                .catch(error => {
-                    console.error('Erro ao buscar as editoras:', error);
-                });
+            addModalEventListeners();
         }
 
+        // paginacao
         const paginacaoItems = document.querySelectorAll('.paginacaoItem');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
@@ -95,11 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const cancelarEditarConfirm = document.querySelector(".cancelarBtnEditarConfirm");
             const fadeEditarConfirm = document.querySelector("#fadeEditarConfirm");
 
-            const modalDetalhes = document.querySelector("#modalDetalhes");
-            const openModalDetalhesBtn = document.querySelectorAll(".openModalDetalhes");
-            const closeModalDetalhes = document.querySelector("#closeBtnDetalhes");
-            const sairDetalhesBtn = document.querySelector(".sairDetalhesBtn");
-            const fadeDetalhes = document.querySelector("#fadeDetalhes");
 
             const toggleModalCadastrar = () => {
                 modalCadastrar.classList.toggle("hide");
@@ -186,29 +148,9 @@ document.addEventListener("DOMContentLoaded", () => {
             editarBtnConfirm.addEventListener("click", confirmEdit);
 
 
-            const exitDetails = () => {
-                modalDetalhes.classList.toggle("hide");
-                fadeDetalhes.classList.toggle("hide");
-            }
-
-            openModalDetalhesBtn.forEach(button => {
-                button.addEventListener("click", exitDetails);
-            });
-
-            sairDetalhesBtn.addEventListener("click", exitDetails);
-            fadeDetalhes.addEventListener("click", exitDetails);
-            closeModalDetalhes.addEventListener("click", exitDetails);
-        }
-
-
-
-        const checkApiClient = setInterval(() => {
-            if (apiClient) {
-                clearInterval(checkApiClient);
-                fetchEditoras();
-            }
-        }, 100);    
-    } else {
-        window.location.href = "../index.html";
-    }
-});
+        // const checkApiClient = setInterval(() => {
+        //     if (apiClient) {
+        //         clearInterval(checkApiClient);
+        //     }
+        // }, 100);    
+}});
