@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
+    <link rel="stylesheet" href="../css/modais.css">
     <link rel="stylesheet" href="../css/rents.css">
     <title>Controle de alugueis</title>
 </head>
@@ -95,7 +96,6 @@
     <main>
         <div class="tableHeader">
             <p class="tituloTable">Aluguéis</p>
-            <button class="cadastrarBtn">Cadastrar</button>
 
             <div class="campoPesquisa">
                 <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Digite o titulo do livro..."> 
@@ -113,7 +113,6 @@
                     <th>Devolução</th>
                     <th>Status</th>
                     <th>Ações</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -126,8 +125,8 @@
                     <td>No prazo</td>
 
                     <td>
-                        <button><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalDevolver"><i class="fa-solid fa-book-bookmark"></i></button>
                     </td>
                 </tr>
 
@@ -140,8 +139,8 @@
                     <td>No prazo</td>
 
                     <td>
-                        <button><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-book-bookmark"></i></button>
                     </td>
                 </tr>
 
@@ -154,13 +153,86 @@
                     <td>No prazo</td>
 
                     <td>
-                        <button><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-book-bookmark"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
+        <div class="paginacao">
+            <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="paginacaoItem active">1</button>
+            <button class="paginacaoItem">2</button>
+            <button class="paginacaoItem">3</button>
+            <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <div id="fade" class="hide"></div>
+
+        <div id="modalDevolver" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja devolver este livro?</h2>
+                <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Você poderá alugar novamente este livro depois no catálogo de livros.</p>
+                <div class="opcoes">
+                    <button class="devolverBtn">Devolver livro</button>
+                    <button class="cancelarBtn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fadeEditar" class="hide"></div>
+
+        <div id="modalEditar" class="hide">
+            <div class="modalHeaderEditar">
+                <button id="closeBtnEditar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Edição</h2>
+            </div>
+            <div class="modalBodyEditar">
+                <form>
+                    <label for="titleBook"><i class="fa-solid fa-book"></i>Nome do Locatário</label>
+                    <input type="text" id="titleBook" name="titleBook" placeholder="Luiz" >
+                    
+                    <label for="autor"><i class="fa-solid fa-user"></i>Email</label>
+                    <input type="text" id="autor" name="autor" placeholder="luizinho@gmail.com">
+
+                    <label for="date"><i class="fa-solid fa-calendar-days"></i>Data de devolução</label>
+                    <input type="date" id="date" name="date" placeholder="dd/mm/aaaa">
+
+                    <div class="moreInfor">
+                        <div class="inforRent"><i class="fa-solid fa-user"></i><span>Autor:</span> José da Fonseca</div>
+                        <div class="inforRent"><i class="fa-solid fa-bookmark"></i><span>Editora:</span> Editorando</div>
+                    </div>
+
+                    <div class="opcoesEditar">
+                        <button class="salvarEditarBtn">Salvar</button>
+                        <button class="cancelarEditarBtn">Cancelar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div id="fadeEditarConfirm" class="hide"></div>
+        
+        <div id="modalEditarConfirm" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja editar este livro?</h2>
+                <button id="closeBtnEditarConfirm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após editar, todos os dados anteriores deste livro serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="editarBtnConfirm">Editar livro</button>
+                    <button class="cancelarBtnEditarConfirm">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script src="../service/rents.js"></script>
 </body>
 </html>

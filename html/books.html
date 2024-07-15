@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../css/headerAndSidebar.css">
+    <link rel="stylesheet" href="../css/modais.css">
     <link rel="stylesheet" href="../css/books.css">
     <title>Cadastro de Livros</title>
 </head>
@@ -102,7 +103,7 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
-
+ 
         <table>
             <thead>
                 <tr>
@@ -127,9 +128,9 @@
                     <td>Disponível</td>
 
                     <td>
-                        <button><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
 
@@ -143,9 +144,9 @@
                     <td>Disponível</td>
 
                     <td>
-                        <button><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
 
@@ -159,13 +160,154 @@
                     <td>Disponível</td>
 
                     <td>
-                        <button><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button><i class="fa-solid fa-pencil"></i></button>
-                        <button><i class="fa-solid fa-trash"></i></button>
+                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
+
+        <div class="paginacao">
+            <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="paginacaoItem active">1</button>
+            <button class="paginacaoItem">2</button>
+            <button class="paginacaoItem">3</button>
+            <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <!-- Modais -->
+        <div id="fadeCadastrar" class="hide"></div>
+
+        <div id="modalCadastrar" class="hide">
+            <div class="modalHeaderCadastrar">
+                <button id="closeBtnCadastrar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Cadastro</h2>
+            </div>
+            <div class="modalBodyCadastrar">
+                <form id="formCadastro">
+                    <label for="titleBook"><i class="fa-solid fa-book"></i>Titulo do livro</label>
+                    <input type="text" id="titleBook" name="titleBook" placeholder="Adicione o titulo do livro" required>
+                    
+                    <label for="autor"><i class="fa-solid fa-user"></i>Autor</label>
+                    <input type="text" id="autor" name="autor" placeholder="Adicione o nome do autor" required>
+
+                    <label for="publisher"><i class="fa-solid fa-bookmark"></i>Editora</label>
+                    <input type="text" id="publisher" name="publisher" placeholder="Adicione o nome da editora" required>
+
+                    <label for="date"><i class="fa-solid fa-calendar-days"></i>Data de lançamento</label>
+                    <input type="date" id="date" name="date" placeholder="Adicione a data de lançamento" required>
+
+                    <label for="estoque"><i class="fa-solid fa-store"></i>Estoque</label>
+                    <input type="number" id="estoque" name="estoque" placeholder="Adicione o número de estoque" required>
+
+                    <div class="opcoesCadastrar">
+                        <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
+                        <button type="button" class="cancelarCadastroBtn">Cancelar</button>
+                    </div> 
+                </form>
+
+            </div>
+        </div>
+
+        <div id="fadeAlugar" class="hide"></div>
+
+        <div id="modalAlugar" class="hide">
+            <div class="modalHeaderAlugar">
+                <button id="closeBtnAlugar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Cadastro</h2>
+            </div>
+            <div class="modalBodyAlugar">
+                <form id="formAluguel">
+                    <label for="titleBook"><i class="fa-solid fa-book"></i>Nome do Locatário</label>
+                    <input type="text" id="titleBook" name="titleBook" placeholder="Adicione o nome do locatário" required>
+                    
+                    <label for="autor"><i class="fa-solid fa-user"></i>Email</label>
+                    <input type="text" id="autor" name="autor" placeholder="Adicione o email do locatário" required>
+
+                    <label for="date"><i class="fa-solid fa-calendar-days"></i>Data de devolução</label>
+                    <input type="date" id="date" name="date" placeholder="dd/mm/aaaa required">
+
+                    <div class="moreInfor">
+                        <div class="inforRent"><i class="fa-solid fa-user"></i><span>Autor:</span> José da Fonseca</div>
+                        <div class="inforRent"><i class="fa-solid fa-bookmark"></i><span>Editora:</span> Editorando</div>
+                    </div>
+
+                    <div class="opcoesAlugar">
+                        <button type="submit" class="salvarAluguelBtn">Alugar</button>
+                        <button type="button" class="cancelarAluguelBtn">Cancelar</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div id="fade" class="hide"></div>
+
+        <div id="modalExcluir" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja excluir este livro?</h2>
+                <button id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após excluir, todos os dados deste livro serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="excluirBtn">Excluir livro</button>
+                    <button class="cancelarBtn">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="fadeEditar" class="hide"></div>
+
+        <div id="modalEditar" class="hide">
+            <div class="modalHeaderEditar">
+                <button id="closeBtnEditar"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Edição</h2>
+            </div>
+            <div class="modalBodyEditar">
+                <form>
+                    <label for="titleBook"><i class="fa-solid fa-book"></i>Titulo do livro</label>
+                    <input type="text" id="titleBook" name="titleBook" placeholder="Pica-Pau" >
+                    
+                    <label for="autor"><i class="fa-solid fa-user"></i>Autor</label>
+                    <input type="text" id="autor" name="autor" placeholder="José da Fonseca	">
+
+                    <label for="publisher"><i class="fa-solid fa-bookmark"></i>Editora</label>
+                    <input type="text" id="publisher" name="publisher" placeholder="Editorando">
+
+                    <label for="date"><i class="fa-solid fa-calendar-days"></i>Data de lançamento</label>
+                    <input type="date" id="date" name="date" placeholder="dd/mm/aaaa">
+
+                    <label for="estoque"><i class="fa-solid fa-store"></i>Estoque</label>
+                    <input type="number" id="estoque" name="estoque" placeholder="50">
+
+                    <div class="opcoesEditar">
+                        <button class="salvarEditarBtn">Salvar</button>
+                        <button class="cancelarEditarBtn">Cancelar</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div id="fadeEditarConfirm" class="hide"></div>
+        
+        <div id="modalEditarConfirm" class="hide">
+            <div class="modalHeader">
+                <h2>Deseja editar este livro?</h2>
+                <button id="closeBtnEditarConfirm"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modalBody">
+                <p>Após editar, todos os dados anteriores deste livro serão apagados para sempre.</p>
+                <div class="opcoes">
+                    <button class="editarBtnConfirm">Editar livro</button>
+                    <button class="cancelarBtnEditarConfirm">Cancelar</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <script src="../service/books.js"></script>
 </body>
 </html>

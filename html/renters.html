@@ -165,23 +165,43 @@
             </div>
             <div class="modalBodyCadastrar">
                 <form id="formCadastro">
-                    <label for="username"><i class="fa-solid fa-book"></i>Nome da editora</label>
-                    <input type="text" id="username" name="username" placeholder="Adicione o nome da editora" required>
-                    
-                    <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
-                    <input type="email" id="email" name="email" placeholder="Adicione o email da editora" required>
+                    <div class="step activeStep">
+                        <label for="username"><i class="fa-solid fa-user"></i>Nome do locatário</label>
+                        <input type="text" id="username" name="username" placeholder="Adicione o nome do locatário" required>
+                        
+                        <label for="email"><i class="fa-solid fa-envelope"></i>Email</label>
+                        <input type="email" id="email" name="email" placeholder="Adicione o email da editora" required>
 
-                    <label for="tel"><i class="fa-solid fa-phone"></i>Telefone</label>
-                    <input type="tel" id="tel" name="tel" placeholder="Adicione o telefone da editora" required>
+                        <label for="tel"><i class="fa-solid fa-phone"></i>Telefone</label>
+                        <input type="tel" id="tel" name="tel" placeholder="Adicione o telefone do locatario" required>
 
-                    <label for="site"><i class="fa-solid fa-globe"></i>Site</label>
-                    <input type="url" id="site" name="site" placeholder="Adicione o site da editora">
+                        <label for="site"><i class="fa-regular fa-credit-card"></i>CPF</label>
+                        <input type="text" id="cpf" name="cpf" placeholder="Adicione o cpf" required>
 
-                    <div class="opcoesCadastrar">
-                        <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
-                        <button class="cancelarCadastroBtn">Cancelar</button>
+                        <div class="opcoesCadastrar">
+                            <button type="submit" class="proximoCadastroBtn">Próximo</button>
+                            <button type="button" class="cancelarCadastroBtn">Cancelar</button>
+                        </div>
                     </div>
 
+                    <div class="step">
+                        <label for="username"><i class="fa-regular fa-building"></i>Logradouro</label>
+                        <input type="text" id="username" name="username" placeholder="Adicione o logradouro">
+                        
+                        <label for="homeNumber"><i class="fa-solid fa-house"></i>Número da residência</label>
+                        <input type="text" id="homeNumber" name="homeNumber" placeholder="Adicione o número da residência">
+
+                        <label for="tel"><i class="fa-solid fa-road"></i>Bairro</label>
+                        <input type="tel" id="tel" name="tel" placeholder="Adicione o bairro">
+
+                        <label for="city"><i class="fa-solid fa-city"></i>Cidade</label>
+                        <input type="text" id="city" name="city" placeholder="Adicione a cidade">
+
+                        <div class="opcoesCadastrar">
+                            <button type="submit" class="salvarCadastroBtn">Cadastrar</button>
+                            <button type="button" class="cancelarCadastroBtn2">Cancelar</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
@@ -260,7 +280,7 @@
             <div class="modalBodyDetalhes">
 
                 <div class="detalhesSessao">
-                    <div class="detalhes  ">
+                    <div class="detalhes">
                         <div class="inforEditora">
                             <div class="inforEditoraTitle"><i class="fa-solid fa-user"></i>Nome do locatário</div>
                             <p>João Silva</p>

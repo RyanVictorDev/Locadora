@@ -1,3 +1,5 @@
+/* conf gerais */
+
 #closeBtn, #closeBtnEditarConfirm{
     background-color: rgba(0, 0, 255, 0);
     padding: .6rem 1.2rem;
@@ -20,7 +22,7 @@
     pointer-events: all;
 }
 
-#fadeCadastrar, #fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes{
+#fadeCadastrar, #fade, #fadeEditar, #fadeEditarConfirm, #fadeDetalhes, #fadeAlugar{
     position: fixed;
     top: 0;
     left: 0;
@@ -30,7 +32,7 @@
     z-index: 50;
 }
 
-#modalExcluir, #modalEditarConfirm{
+#modalExcluir, #modalEditarConfirm, #modalDevolver{
     position: fixed;
     left: 50%;
     top: 50%;
@@ -60,7 +62,7 @@
     gap: 1.2rem;
 }
 
-#fadeCadastrar.hide, #modalCadastrar.hide, #fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide, #modalDetalhes.hide, #fadeDetalhes.hide{
+#fadeCadastrar.hide, #modalCadastrar.hide, #fade.hide, #modalExcluir.hide, #modalEditarConfirm.hide, #fadeEditarConfirm.hide, #modalEditar.hide, #fadeEditar.hide, #modalDetalhes.hide, #fadeDetalhes.hide ,#modalAlugar.hide, #fadeAlugar.hide, #modalDevolver.hide{
     opacity: 0;
     pointer-events: none;
 }
@@ -70,7 +72,7 @@
     justify-content: space-evenly;
 }
 
-.excluirBtn, .editarBtnConfirm{
+.excluirBtn, .editarBtnConfirm, .devolverBtn{
     border-radius: 10px;
     border: none;
     width: 35%;
@@ -83,7 +85,7 @@
     cursor: pointer;
 }
 
-.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm, .cancelarCadastroBtn{
+.cancelarBtn, .cancelarEditarBtn, .cancelarBtnEditarConfirm, .cancelarCadastroBtn, .cancelarCadastroBtn2, .cancelarAluguelBtn{
     border-radius: 10px;
     border: none;
     width: 35%;
@@ -328,7 +330,19 @@ label{
     margin-top: 3%;
 }
 
-.opcoesCadastrar{
+form .step{
+    display: none;
+}
+
+.step.activeStep{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.opcoesAlugar{
     display: flex;
     margin-top: 2%;
     justify-content: space-evenly;
@@ -343,7 +357,80 @@ label{
     padding-inline: 5rem;
 }
 
-.salvarCadastroBtn{
+.salvarCadastroBtn, .proximoCadastroBtn{
+    border-radius: 10px;
+    border: none;
+    width: 35%;
+    padding: 1rem;
+    color: #dedede;
+    font-size: 1.5vw;
+    font-weight: bold;
+    background-color: #105352;
+    cursor: pointer;
+}
+
+/* Modal ALuguel */
+/* Modal cadastro */
+#modalAlugar{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 40%;
+    min-height: 35%;
+    max-width: 90%;
+    padding: 1.2rem;
+    border: solid black 1px;
+    border-radius: 15px;
+    z-index: 51;
+    background-color: #d4d4d4;
+}
+
+.modalHeaderAlugar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#closeBtnAlugar{
+    background-color: rgba(0, 0, 255, 0);
+    padding: .6rem 1.2rem;
+    border: none;
+    border-radius: .25rem;
+    cursor: pointer;
+    opacity: .9;
+    font-size: 1rem;
+    transition: all 0.5s;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.modalHeaderAlugar h2{
+    display: flex;
+    margin-top: -5%;
+    align-self: center;
+}
+
+.modalBodyAlugar{
+    display: flex;
+    flex-direction: column;
+}
+
+.modalBodyAlugar form{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+.opcoesCadastrar{
+    display: flex;
+    margin-top: 2%;
+    justify-content: space-evenly;
+}
+
+.salvarAluguelBtn{
     border-radius: 10px;
     border: none;
     width: 35%;

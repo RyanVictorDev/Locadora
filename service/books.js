@@ -34,13 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         function addModalEventListeners() {
+            const modalAlugar = document.querySelector("#modalAlugar");
+            const formAlugar = document.querySelector("#formAluguel")
+            const openModalAlugar = document.querySelectorAll(".alugarBtn");
+            const closeModalAlugar = document.querySelector("#closeBtnAlugar");
+            const cancelarAlugar = document.querySelector(".cancelarAluguelBtn");
+            const alugarBtn = document.querySelector(".salvarAluguelBtn");
+            const fadeAlugar = document.querySelector("#fadeAlugar")
+
             const modalCadastrar = document.querySelector("#modalCadastrar");
             const formCadastrar = document.querySelector("#formCadastro")
             const openModalCadastrar = document.querySelectorAll(".cadastrarBtn");
             const closeModalCadastrar = document.querySelector("#closeBtnCadastrar");
             const cancelarCadastrar = document.querySelector(".cancelarCadastroBtn");
-            const cancelarCadastrar2 = document.querySelector(".cancelarCadastroBtn2");
-            const proximoBtn = document.querySelector(".proximoCadastroBtn");
             const cadastrarBtn = document.querySelector(".salvarCadastroBtn");
             const fadeCadastrar = document.querySelector("#fadeCadastrar")
 
@@ -64,11 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const cancelarEditarConfirm = document.querySelector(".cancelarBtnEditarConfirm");
             const fadeEditarConfirm = document.querySelector("#fadeEditarConfirm");
 
-            const modalDetalhes = document.querySelector("#modalDetalhes");
-            const openModalDetalhesBtn = document.querySelectorAll(".openModalDetalhes");
-            const closeModalDetalhes = document.querySelector("#closeBtnDetalhes");
-            const sairDetalhesBtn = document.querySelector(".sairDetalhesBtn");
-            const fadeDetalhes = document.querySelector("#fadeDetalhes");
 
             const toggleModalCadastrar = () => {
                 modalCadastrar.classList.toggle("hide");
@@ -83,37 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
             fadeCadastrar.addEventListener("click", toggleModalCadastrar);
             cancelarCadastrar.addEventListener("click", toggleModalCadastrar);
 
-            cancelarCadastrar2.addEventListener("click", function() {
-                prevStep();
-                toggleModalCadastrar();
-            });            
-
-            // Steps
-            let currentStep = 0;
-            const steps = document.getElementsByClassName("step");
-    
-            function showStep(step) {
-                steps[step].classList.add("activeStep");
-            }
-    
-            function hideStep(step) {
-                steps[step].classList.remove("activeStep");
-            }
-    
-            function nextStep() {
-                hideStep(currentStep);
-                currentStep++;
-                showStep(currentStep);
-            }
-
-            function prevStep() {
-                hideStep(currentStep);
-                currentStep--;
-                showStep(currentStep);
-            }
-
-            proximoBtn.addEventListener("click", nextStep)
-
             // checkando se o formulario foi preenchido
             formCadastrar.addEventListener("submit", (event) => {
                 event.preventDefault();
@@ -124,14 +94,45 @@ document.addEventListener("DOMContentLoaded", () => {
                 camposObrigatorios.forEach(field => {
                     if (!field.value){
                         camposPreenchidos = false;
-                        console.log("eima")
                     }
                 });
 
                 if (camposPreenchidos){
-                    proximoBtn.addEventListener("click", nextStep)
                     cadastrarBtn.addEventListener("click", toggleModalCadastrar)
                     toggleModalCadastrar();
+                }
+            })
+
+
+            const toggleModalAlugar = () => {
+                modalAlugar.classList.toggle("hide");
+                fadeAlugar.classList.toggle("hide");
+            };
+
+            openModalAlugar.forEach(button => {
+                button.addEventListener("click", toggleModalAlugar);
+            });
+
+            closeModalAlugar.addEventListener("click", toggleModalAlugar);
+            fadeAlugar.addEventListener("click", toggleModalAlugar);
+            cancelarAlugar.addEventListener("click", toggleModalAlugar);
+
+            // checkando se o formulario foi preenchido
+            formAlugar.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                const camposObrigatorios = formAlugar.querySelectorAll('[required]');
+                let camposPreenchidos = true;
+
+                camposObrigatorios.forEach(field => {
+                    if (!field.value){
+                        camposPreenchidos = false;
+                    }
+                });
+
+                if (camposPreenchidos){
+                    alugarBtn.addEventListener("click", toggleModalAlugar)
+                    toggleModalAlugar();
                 }
             })
 
@@ -188,17 +189,9 @@ document.addEventListener("DOMContentLoaded", () => {
             editarBtnConfirm.addEventListener("click", confirmEdit);
 
 
-            const exitDetails = () => {
-                modalDetalhes.classList.toggle("hide");
-                fadeDetalhes.classList.toggle("hide");
-            }
-
-            openModalDetalhesBtn.forEach(button => {
-                button.addEventListener("click", exitDetails);
-            });
-
-            sairDetalhesBtn.addEventListener("click", exitDetails);
-            fadeDetalhes.addEventListener("click", exitDetails);
-            closeModalDetalhes.addEventListener("click", exitDetails);
-        }
-    });
+        // const checkApiClient = setInterval(() => {
+        //     if (apiClient) {
+        //         clearInterval(checkApiClient);
+        //     }
+        // }, 100);    
+}});
