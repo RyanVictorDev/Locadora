@@ -29,7 +29,7 @@ new Chart(ctx2, {
     labels: ['Harry Potter', 'The Boys', 'Receitas da Vovó'],
     datasets: [{
       label: 'Livros mais alugados',
-      data: [999, 998, 997],
+      data: [999, 400, 297],
       backgroundColor:['#509358', '#B22222', '#46769A'] ,
       borderWidth: 0
     }]
