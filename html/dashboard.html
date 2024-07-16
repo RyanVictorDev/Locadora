@@ -12,6 +12,7 @@
 <body>
     <nav id="sidebar">
         <div id="sidebarContent">
+
             <div id="user">
                 <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar">
 
@@ -90,9 +91,13 @@
             </button>
         </div>
     </nav>
-    <header>Locadora</header>
+    
+    <header id="header">
+        <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        Locadora
+    </header>
 
-    <main>
+    <main id="main">
         <div class="grafics">
             <div class="chart1">
                 <div class="title">Relações de livros</div>
@@ -145,5 +150,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../service/dashboard.js"></script>
+    <script src="../service/sidebar.js"></script>
 </body>
 </html>
