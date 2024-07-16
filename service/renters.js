@@ -2,36 +2,83 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem('apiToken');
 
     if (token != null) {
-            addModalEventListeners();
         }
 
-        // paginacao
+        const data = [
+            { name: "João Silva", email: "joao.silva@example.com", phone: "(xx) xxxxxxxxx" },
+            { name: "Maria Souza", email: "maria.souza@example.com", phone: "(xx) xxxxxxxxx" },
+            { name: "Pedro Oliveira", email: "pedro.oliveira@example.com", phone: "(xx) xxxxxxxxx" },
+            { name: "Ana Costa", email: "ana.costa@example.com", phone: "(xx) xxxxxxxxx" },
+            { name: "Lucas Lima", email: "lucas.lima@example.com", phone: "(xx) xxxxxxxxx" },
+            { name: "Clara Menezes", email: "clara.menezes@example.com", phone: "(xx) xxxxxxxxx" }
+        ];
+
+        const rowsPerPage = 3;
+        let currentPage = 0;
+
+        const tableBody = document.getElementById('table-body');
         const paginacaoItems = document.querySelectorAll('.paginacaoItem');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
-    
-        prevButton.addEventListener('click', function() {
-            changePage(-1);
-        });
-    
-        nextButton.addEventListener('click', function() {
-            changePage(1);
-        });
-    
+
+        function renderTable(page) {
+            tableBody.innerHTML = '';
+            const start = page * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = data.slice(start, end);
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.name}</td>
+                    <td>${row.email}</td>
+                    <td>${row.phone}</td>
+                    <td>
+                        <button class="openModalDetalhes"><i class="fa-solid fa-eye"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+                addModalEventListeners();
+            });
+        }
+
         function changePage(direction) {
             const activeItem = document.querySelector('.paginacaoItem.active');
             let currentIndex = Array.from(paginacaoItems).indexOf(activeItem);
             let newIndex = currentIndex + direction;
-    
+
             if (newIndex < 0) {
                 newIndex = paginacaoItems.length - 1; 
             } else if (newIndex >= paginacaoItems.length) {
                 newIndex = 0; 
             }
-    
+
             activeItem.classList.remove('active');
             paginacaoItems[newIndex].classList.add('active');
+            currentPage = newIndex;
+            renderTable(currentPage);
         }
+
+        prevButton.addEventListener('click', function() {
+            changePage(-1);
+        });
+
+        nextButton.addEventListener('click', function() {
+            changePage(1);
+        });
+
+        paginacaoItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                document.querySelector('.paginacaoItem.active').classList.remove('active');
+                item.classList.add('active');
+                currentPage = index;
+                renderTable(currentPage);
+            });
+        });
+
+        renderTable(currentPage);
+
 
         function addModalEventListeners() {
             const modalCadastrar = document.querySelector("#modalCadastrar");

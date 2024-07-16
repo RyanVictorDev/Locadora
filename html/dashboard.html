@@ -14,8 +14,7 @@
         <div id="sidebarContent">
 
             <div id="user">
-                <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar">
-
+                <!-- <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar"> -->
                 <p id="userInfos">
                     <span class="itemDescription">
                         Admin
@@ -25,6 +24,8 @@
                         useremail@gmail.com
                     </span>
                 </p>
+
+                <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
             </div>
    
             <ul id="sideItens">
@@ -93,7 +94,7 @@
     </nav>
     
     <header id="header">
-        <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
+        <!-- <button id="openSidebar"><i class="fa-solid fa-bars"></i></button> -->
         Locadora
     </header>
 
@@ -119,25 +120,11 @@
                     <th>Aluguéis ativos</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>João Silva</td>
-                    <td>12</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Maria Souza</td>
-                    <td>16</td>
-                    <td>8</td>
-                </tr>
-                <tr>
-                    <td>Pedro Oliveira</td>
-                    <td>50</td>
-                    <td>5</td>
-                </tr>
+            <tbody id="table-body">
+                <!-- js -->
             </tbody>
         </table>
-
+        
         <div class="paginacao">
             <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="paginacaoItem active">1</button>
@@ -145,6 +132,7 @@
             <button class="paginacaoItem">3</button>
             <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+        
 
     </main>
 

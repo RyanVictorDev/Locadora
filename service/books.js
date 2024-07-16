@@ -2,36 +2,88 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem('apiToken');
 
     if (token != null) {
-            addModalEventListeners();
         }
 
-        // paginacao
+        const data = [
+            { title: "Pica-Pau", author: "José da Fonseca", publisher: "Editorando", available: 50, rented: 50, release: "dd-mm-aaaa", status: "Disponível" },
+            { title: "Livro 2", author: "Autor 2", publisher: "Editora 2", available: 20, rented: 30, release: "dd-mm-aaaa", status: "Disponível" },
+            { title: "Livro 3", author: "Autor 3", publisher: "Editora 3", available: 15, rented: 35, release: "dd-mm-aaaa", status: "Indisponível" },
+            { title: "Livro 4", author: "Autor 4", publisher: "Editora 4", available: 10, rented: 40, release: "dd-mm-aaaa", status: "Disponível" },
+            { title: "Livro 5", author: "Autor 5", publisher: "Editora 5", available: 5, rented: 45, release: "dd-mm-aaaa", status: "Disponível" },
+            { title: "Livro 6", author: "Autor 6", publisher: "Editora 6", available: 0, rented: 50, release: "dd-mm-aaaa", status: "Indisponível" }
+        ];
+
+        const rowsPerPage = 3;
+        let currentPage = 0;
+
+        const tableBody = document.getElementById('table-body');
         const paginacaoItems = document.querySelectorAll('.paginacaoItem');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
-    
-        prevButton.addEventListener('click', function() {
-            changePage(-1);
-        });
-    
-        nextButton.addEventListener('click', function() {
-            changePage(1);
-        });
-    
+
+        function renderTable(page) {
+            tableBody.innerHTML = '';
+            const start = page * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = data.slice(start, end);
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.title}</td>
+                    <td>${row.author}</td>
+                    <td>${row.publisher}</td>
+                    <td>${row.available}</td>
+                    <td>${row.rented}</td>
+                    <td>${row.release}</td>
+                    <td>${row.status}</td>
+                    <td>
+                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+                addModalEventListeners();
+
+            });
+        }
+
         function changePage(direction) {
             const activeItem = document.querySelector('.paginacaoItem.active');
             let currentIndex = Array.from(paginacaoItems).indexOf(activeItem);
             let newIndex = currentIndex + direction;
-    
+
             if (newIndex < 0) {
                 newIndex = paginacaoItems.length - 1; 
             } else if (newIndex >= paginacaoItems.length) {
                 newIndex = 0; 
             }
-    
+
             activeItem.classList.remove('active');
             paginacaoItems[newIndex].classList.add('active');
+            currentPage = newIndex;
+            renderTable(currentPage);
         }
+
+        prevButton.addEventListener('click', function() {
+            changePage(-1);
+        });
+
+        nextButton.addEventListener('click', function() {
+            changePage(1);
+        });
+
+        paginacaoItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                document.querySelector('.paginacaoItem.active').classList.remove('active');
+                item.classList.add('active');
+                currentPage = index;
+                renderTable(currentPage);
+            });
+        });
+
+        renderTable(currentPage);
+
 
         function addModalEventListeners() {
             const modalAlugar = document.querySelector("#modalAlugar");

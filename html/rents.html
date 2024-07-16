@@ -14,8 +14,7 @@
     <nav id="sidebar">
         <div id="sidebarContent">
             <div id="user">
-                <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar">
-
+                <!-- <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar"> -->
                 <p id="userInfos">
                     <span class="itemDescription">
                         Admin
@@ -25,6 +24,8 @@
                         useremail@gmail.com
                     </span>
                 </p>
+
+                <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
             </div>
    
             <ul id="sideItens">
@@ -82,7 +83,7 @@
                     </li>
                 </a>
             </ul>
-        </div>
+        </div> 
 
         <div id="logout">
             <button id="logoutBtn" onclick="window.location.href='../index.html'">
@@ -93,7 +94,6 @@
     </nav>
 
     <header id="header">
-        <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         Locadora
     </header>
 
@@ -111,7 +111,7 @@
             <thead>
                 <tr>
                     <th>Locatário</th>
-                    <th>Titulo</th>
+                    <th>Título</th>
                     <th>Autor</th>
                     <th>Editora</th>
                     <th>Devolução</th>
@@ -119,51 +119,11 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Luiz</td>
-                    <td>Pica-Pau</td>
-                    <td>José da Fonseca</td>
-                    <td>Editorando</td>
-                    <td>dd-mm-aaaa</td>
-                    <td>No prazo</td>
-
-                    <td>
-                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalDevolver"><i class="fa-solid fa-book-bookmark"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Luiz</td>
-                    <td>Pica-Pau</td>
-                    <td>José da Fonseca</td>
-                    <td>Editorando</td>
-                    <td>dd-mm-aaaa</td>
-                    <td>No prazo</td>
-
-                    <td>
-                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalDevolver"><i class="fa-solid fa-book-bookmark"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Luiz</td>
-                    <td>Pica-Pau</td>
-                    <td>José da Fonseca</td>
-                    <td>Editorando</td>
-                    <td>dd-mm-aaaa</td>
-                    <td>No prazo</td>
-
-                    <td>
-                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalDevolver"><i class="fa-solid fa-book-bookmark"></i></button>
-                    </td>
-                </tr>
+            <tbody id="table-body">
+                <!-- js -->
             </tbody>
         </table>
-
+        
         <div class="paginacao">
             <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="paginacaoItem active">1</button>
@@ -171,6 +131,7 @@
             <button class="paginacaoItem">3</button>
             <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+        
 
         <div id="fade" class="hide"></div>
 

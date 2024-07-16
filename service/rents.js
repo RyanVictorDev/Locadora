@@ -2,36 +2,84 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem('apiToken');
 
     if (token != null) {
-            addModalEventListeners();
         }
 
-        // paginacao
+        const data = [
+            { locatario: "Luiz", title: "Pica-Pau", author: "José da Fonseca", publisher: "Editorando", returnDate: "dd-mm-aaaa", status: "No prazo" },
+            { locatario: "Luiz", title: "Livro 2", author: "Autor 2", publisher: "Editora 2", returnDate: "dd-mm-aaaa", status: "No prazo" },
+            { locatario: "Luiz", title: "Livro 3", author: "Autor 3", publisher: "Editora 3", returnDate: "dd-mm-aaaa", status: "No prazo" },
+            { locatario: "Luiz", title: "Livro 4", author: "Autor 4", publisher: "Editora 4", returnDate: "dd-mm-aaaa", status: "No prazo" },
+            { locatario: "Luiz", title: "Livro 5", author: "Autor 5", publisher: "Editora 5", returnDate: "dd-mm-aaaa", status: "No prazo" },
+            { locatario: "Luiz", title: "Livro 6", author: "Autor 6", publisher: "Editora 6", returnDate: "dd-mm-aaaa", status: "No prazo" }
+        ];
+
+        const rowsPerPage = 3;
+        let currentPage = 0;
+
+        const tableBody = document.getElementById('table-body');
         const paginacaoItems = document.querySelectorAll('.paginacaoItem');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
-    
-        prevButton.addEventListener('click', function() {
-            changePage(-1);
-        });
-    
-        nextButton.addEventListener('click', function() {
-            changePage(1);
-        });
-    
+
+        function renderTable(page) {
+            tableBody.innerHTML = '';
+            const start = page * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = data.slice(start, end);
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.locatario}</td>
+                    <td>${row.title}</td>
+                    <td>${row.author}</td>
+                    <td>${row.publisher}</td>
+                    <td>${row.returnDate}</td>
+                    <td>${row.status}</td>
+                    <td>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalDevolver"><i class="fa-solid fa-book-bookmark"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+                addModalEventListeners();
+            });
+        }
+
         function changePage(direction) {
             const activeItem = document.querySelector('.paginacaoItem.active');
             let currentIndex = Array.from(paginacaoItems).indexOf(activeItem);
             let newIndex = currentIndex + direction;
-    
+
             if (newIndex < 0) {
                 newIndex = paginacaoItems.length - 1; 
             } else if (newIndex >= paginacaoItems.length) {
                 newIndex = 0; 
             }
-    
+
             activeItem.classList.remove('active');
             paginacaoItems[newIndex].classList.add('active');
+            currentPage = newIndex;
+            renderTable(currentPage);
         }
+
+        prevButton.addEventListener('click', function() {
+            changePage(-1);
+        });
+
+        nextButton.addEventListener('click', function() {
+            changePage(1);
+        });
+
+        paginacaoItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                document.querySelector('.paginacaoItem.active').classList.remove('active');
+                item.classList.add('active');
+                currentPage = index;
+                renderTable(currentPage);
+            });
+        });
+
+        renderTable(currentPage);
 
         function addModalEventListeners() {
             const modalDevolver = document.querySelector("#modalDevolver");

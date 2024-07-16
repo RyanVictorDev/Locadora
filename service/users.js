@@ -2,36 +2,87 @@ document.addEventListener("DOMContentLoaded", () => {
     const token = localStorage.getItem('apiToken');
 
     if (token != null) {
-            addModalEventListeners();
+            // 
         }
 
-        // paginacao
+        // Dados
+        const data = [
+            { name: "João Silva", permission: "Editor", email: "joao.silva@example.com" },
+            { name: "Maria Souza", permission: "Editor", email: "maria.souza@example.com" },
+            { name: "Pedro Oliveira", permission: "Locatário", email: "pedro.oliveira@example.com" },
+            { name: "Ana Costa", permission: "Locatário", email: "ana.costa@example.com" },
+            { name: "Lucas Lima", permission: "Editor", email: "lucas.lima@example.com" },
+            { name: "Clara Menezes", permission: "Locatário", email: "clara.menezes@example.com" },
+            { name: "Ana Bannaa", permission: "Locatário", email: "ana.bana@example.com" },
+            { name: "Larissa", permission: "Editor", email: "larima@example.com" },
+            { name: "Ana Clara", permission: "Locatário", email: "clara.farias@example.com" }
+        ];
+
+        const rowsPerPage = 3;
+        let currentPage = 0;
+        
+        const tableBody = document.getElementById('table-body');
         const paginacaoItems = document.querySelectorAll('.paginacaoItem');
         const prevButton = document.getElementById('prev');
         const nextButton = document.getElementById('next');
-    
-        prevButton.addEventListener('click', function() {
-            changePage(-1);
-        });
-    
-        nextButton.addEventListener('click', function() {
-            changePage(1);
-        });
-    
+
+        function renderTable(page) {
+            tableBody.innerHTML = '';
+            const start = page * rowsPerPage;
+            const end = start + rowsPerPage;
+            const pageData = data.slice(start, end);
+            pageData.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${row.name}</td>
+                    <td>${row.permission}</td>
+                    <td>${row.email}</td>
+                    <td>
+                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
+                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+                addModalEventListeners();
+            });
+        }
+
         function changePage(direction) {
             const activeItem = document.querySelector('.paginacaoItem.active');
             let currentIndex = Array.from(paginacaoItems).indexOf(activeItem);
             let newIndex = currentIndex + direction;
-    
+
             if (newIndex < 0) {
                 newIndex = paginacaoItems.length - 1; 
             } else if (newIndex >= paginacaoItems.length) {
                 newIndex = 0; 
             }
-    
+
             activeItem.classList.remove('active');
             paginacaoItems[newIndex].classList.add('active');
+            currentPage = newIndex;
+            renderTable(currentPage);
         }
+
+        prevButton.addEventListener('click', function() {
+            changePage(-1);
+        });
+
+        nextButton.addEventListener('click', function() {
+            changePage(1);
+        });
+
+        paginacaoItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                document.querySelector('.paginacaoItem.active').classList.remove('active');
+                item.classList.add('active');
+                currentPage = index;
+                renderTable(currentPage);
+            });
+        });
+
+        renderTable(currentPage);
+
 
         function addModalEventListeners() {
             const modalCadastrar = document.querySelector("#modalCadastrar");

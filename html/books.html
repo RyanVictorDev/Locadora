@@ -14,8 +14,7 @@
     <nav id="sidebar">
         <div id="sidebarContent">
             <div id="user">
-                <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar">
-
+                <!-- <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" id="userAvatar" alt="Avatar"> -->
                 <p id="userInfos">
                     <span class="itemDescription">
                         Admin
@@ -25,6 +24,8 @@
                         useremail@gmail.com
                     </span>
                 </p>
+
+                <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
             </div>
    
             <ul id="sideItens">
@@ -93,7 +94,6 @@
     </nav>
 
     <header id="header">
-        <button id="openSidebar"><i class="fa-solid fa-bars"></i></button>
         Locadora
     </header>
 
@@ -121,57 +121,11 @@
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Pica-Pau</td>
-                    <td>José da Fonseca</td>
-                    <td>Editorando</td>
-                    <td>50</td>
-                    <td>50</td>
-                    <td>dd-mm-aaaa</td>
-                    <td>Disponível</td>
-
-                    <td>
-                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Pica-Pau</td>
-                    <td>José da Fonseca</td>
-                    <td>Editorando</td>
-                    <td>50</td>
-                    <td>50</td>
-                    <td>dd-mm-aaaa</td>
-                    <td>Disponível</td>
-
-                    <td>
-                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Pica-Pau</td>
-                    <td>José da Fonseca</td>
-                    <td>Editorando</td>
-                    <td>50</td>
-                    <td>50</td>
-                    <td>dd-mm-aaaa</td>
-                    <td>Disponível</td>
-
-                    <td>
-                        <button class="alugarBtn"><i class="fa-solid fa-book-bookmark"></i></button>
-                        <button class="openModalEditar"><i class="fa-solid fa-pencil"></i></button>
-                        <button class="openModalExcluir"><i class="fa-solid fa-trash"></i></button>
-                    </td>
-                </tr>
+            <tbody id="table-body">
+                <!-- js -->
             </tbody>
         </table>
-
+        
         <div class="paginacao">
             <button id="prev" class="chevron"><i class="fa-solid fa-chevron-left"></i></button>
             <button class="paginacaoItem active">1</button>
@@ -179,6 +133,7 @@
             <button class="paginacaoItem">3</button>
             <button id="next" class="chevron"><i class="fa-solid fa-chevron-right"></i></button>
         </div>
+        
 
         <!-- Modais -->
         <div id="fadeCadastrar" class="hide"></div>
